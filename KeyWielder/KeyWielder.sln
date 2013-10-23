@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyWielder", "KeyWielder\KeyWielder.csproj", "{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyWielder.Test", "KeyWielder.Test\KeyWielder.Test.csproj", "{713A3F50-57DA-409A-B995-6691FB593113}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = KeyWielder.Test\\KeyWielder.Test.csproj
+		SccProjectName1 = KeyWielder.Test
+		SccLocalPath1 = KeyWielder.Test
+		SccProjectUniqueName2 = KeyWielder\\KeyWielder.csproj
+		SccProjectName2 = KeyWielder
+		SccLocalPath2 = KeyWielder
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{713A3F50-57DA-409A-B995-6691FB593113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{713A3F50-57DA-409A-B995-6691FB593113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{713A3F50-57DA-409A-B995-6691FB593113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{713A3F50-57DA-409A-B995-6691FB593113}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
