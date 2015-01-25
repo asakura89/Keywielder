@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyWielder", "KeyWielder\KeyWielder.csproj", "{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywielder", "Keywielder\Keywielder.csproj", "{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyWielder.Test", "KeyWielder.Test\KeyWielder.Test.csproj", "{713A3F50-57DA-409A-B995-6691FB593113}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywielder.Test", "Keywielder.Test\Keywielder.Test.csproj", "{713A3F50-57DA-409A-B995-6691FB593113}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -11,12 +13,12 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = KeyWielder.Test\\KeyWielder.Test.csproj
-		SccProjectName1 = KeyWielder.Test
-		SccLocalPath1 = KeyWielder.Test
-		SccProjectUniqueName2 = KeyWielder\\KeyWielder.csproj
-		SccProjectName2 = KeyWielder
-		SccLocalPath2 = KeyWielder
+		SccProjectUniqueName1 = Keywielder.Test\\Keywielder.Test.csproj
+		SccProjectName1 = Keywielder.Test
+		SccLocalPath1 = Keywielder.Test
+		SccProjectUniqueName2 = Keywielder\\Keywielder.csproj
+		SccProjectName2 = Keywielder
+		SccLocalPath2 = Keywielder
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

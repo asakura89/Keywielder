@@ -7,8 +7,8 @@
     <ProjectGuid>{713A3F50-57DA-409A-B995-6691FB593113}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KeyWielder.Test</RootNamespace>
-    <AssemblyName>KeyWielder.Test</AssemblyName>
+    <RootNamespace>Keywielder.Test</RootNamespace>
+    <AssemblyName>Keywielder.Test</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,13 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtendedCollection.cs" />
-    <Compile Include="KeyWielderTest.cs" />
+    <Compile Include="KeywielderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KeyWielder\KeyWielder.csproj">
+    <ProjectReference Include="..\Keywielder\Keywielder.csproj">
       <Project>{cf3d7532-5eba-47a3-9808-7c304db22cb5}</Project>
-      <Name>KeyWielder</Name>
+      <Name>Keywielder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

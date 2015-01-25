@@ -5,10 +5,10 @@ using System.Text.RegularExpressions;
 using Ayumi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace KeyWielder.Test
+namespace Keywielder.Test
 {
     [TestClass]
-    public class KeyWielderTest
+    public class KeywielderTest
     {
         private String firstKey;
         private String secondKey;
@@ -17,7 +17,7 @@ namespace KeyWielder.Test
         [TestInitialize]
         public void Initialize()
         {
-            firstKey = KeyWielder
+            firstKey = Keywielder
                 .New()
                 .AddString("GRE", 3)
                 .AddLongYear()
@@ -28,7 +28,7 @@ namespace KeyWielder.Test
 
             Debug.WriteLine(firstKey);
 
-            secondKey = KeyWielder
+            secondKey = Keywielder
                 .New()
                 .AddString("GRE", 3, "/")
                 .AddLongYear("-")
@@ -39,7 +39,7 @@ namespace KeyWielder.Test
 
             Debug.WriteLine(secondKey);
 
-            thirdKey = KeyWielder
+            thirdKey = Keywielder
                 .New()
                 .AddString("ASAKURA", 7)
                 .AddCounter(77, 12, 2)
@@ -80,7 +80,7 @@ namespace KeyWielder.Test
             String currentYearString = currentDate.Year.ToString();
             String currentDayString = indonesianDayArray[currentDayOfWeek];
             String separator = "•";
-            String fourthKey = KeyWielder
+            String fourthKey = Keywielder
                 .New()
                 .AddString("DOC", 3)
                 .AddString("UMENTATION", 5, "/")
@@ -115,19 +115,19 @@ namespace KeyWielder.Test
         [TestMethod]
         public void RandomKeyTest()
         {
-            String fifthKey = KeyWielder.New().AddRandomString(8).BuildKey();
+            String fifthKey = Keywielder.New().AddRandomString(8).BuildKey();
             Debug.WriteLine(fifthKey);
 
             Assert.IsTrue(fifthKey.Length == 8);
             Assert.IsTrue(Regex.IsMatch(fifthKey, @"^[a-zA-Z]+$"));
 
-            String sixthKey = KeyWielder.New().AddRandomAlphaNumeric(12).BuildKey();
+            String sixthKey = Keywielder.New().AddRandomAlphaNumeric(12).BuildKey();
             Debug.WriteLine(sixthKey);
 
             Assert.IsTrue(sixthKey.Length == 12);
             Assert.IsTrue(Regex.IsMatch(sixthKey, @"^[a-zA-Z0-9]+$"));
 
-            String seventhKey = KeyWielder.New().AddRandomNumber(6).BuildKey();
+            String seventhKey = Keywielder.New().AddRandomNumber(6).BuildKey();
             Debug.WriteLine(seventhKey);
 
             Assert.IsTrue(seventhKey.Length == 6);
@@ -141,7 +141,7 @@ namespace KeyWielder.Test
         [TestMethod]
         public void GuidKeyTest()
         {
-            String guidKey = KeyWielder.New().AddGUIDString().BuildKey();
+            String guidKey = Keywielder.New().AddGUIDString().BuildKey();
             Debug.WriteLine(guidKey);
 
             Assert.IsTrue(guidKey.Length == 32);

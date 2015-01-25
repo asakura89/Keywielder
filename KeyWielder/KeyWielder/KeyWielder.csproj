@@ -7,8 +7,8 @@
     <ProjectGuid>{CF3D7532-5EBA-47A3-9808-7C304DB22CB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KeyWielder</RootNamespace>
-    <AssemblyName>KeyWielder</AssemblyName>
+    <RootNamespace>Keywielder</RootNamespace>
+    <AssemblyName>Keywielder</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="KeyWielder.cs" />
+    <Compile Include="Keywielder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
