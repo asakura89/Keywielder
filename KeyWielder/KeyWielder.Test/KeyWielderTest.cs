@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using Ayumi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -57,6 +58,10 @@ namespace KeyWielder.Test
             Assert.AreEqual("GRE" + firstExpectation + "0013", firstKey); // change expectation to today's date
             Assert.AreEqual("GRE/" + secondExpectation + "/00238", secondKey); // change expectation to today's date
             Assert.AreEqual("ASAKURA89", thirdKey);
+
+            Assert.AreNotEqual(firstKey, secondKey);
+            Assert.AreNotEqual(secondKey, thirdKey);
+            Assert.AreNotEqual(firstKey, thirdKey);
         }
 
         [TestMethod]
@@ -108,11 +113,38 @@ namespace KeyWielder.Test
         }
 
         [TestMethod]
-        public void KeyUniquenessTest()
+        public void RandomKeyTest()
         {
-            Assert.AreNotEqual(firstKey, secondKey);
-            Assert.AreNotEqual(secondKey, thirdKey);
-            Assert.AreNotEqual(firstKey, thirdKey);
+            String fifthKey = KeyWielder.New().AddRandomString(8).BuildKey();
+            Debug.WriteLine(fifthKey);
+
+            Assert.IsTrue(fifthKey.Length == 8);
+            Assert.IsTrue(Regex.IsMatch(fifthKey, @"^[a-zA-Z]+$"));
+
+            String sixthKey = KeyWielder.New().AddRandomAlphaNumeric(12).BuildKey();
+            Debug.WriteLine(sixthKey);
+
+            Assert.IsTrue(sixthKey.Length == 12);
+            Assert.IsTrue(Regex.IsMatch(sixthKey, @"^[a-zA-Z0-9]+$"));
+
+            String seventhKey = KeyWielder.New().AddRandomNumber(6).BuildKey();
+            Debug.WriteLine(seventhKey);
+
+            Assert.IsTrue(seventhKey.Length == 6);
+            Assert.IsTrue(Regex.IsMatch(seventhKey, @"^[0-9]+$"));
+
+            Assert.AreNotEqual(fifthKey, sixthKey);
+            Assert.AreNotEqual(fifthKey, seventhKey);
+            Assert.AreNotEqual(sixthKey, seventhKey);
+        }
+
+        [TestMethod]
+        public void GuidKeyTest()
+        {
+            String guidKey = KeyWielder.New().AddGUIDString().BuildKey();
+            Debug.WriteLine(guidKey);
+
+            Assert.IsTrue(guidKey.Length == 32);
         }
     }
 }

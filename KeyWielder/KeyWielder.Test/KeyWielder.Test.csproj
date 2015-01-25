@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtendedCollection.cs" />
-    <Compile Include="KeyBlasterTest.cs" />
     <Compile Include="KeyWielderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

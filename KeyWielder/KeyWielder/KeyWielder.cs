@@ -9,7 +9,67 @@ namespace KeyWielder
     {
         private readonly StringBuilder keyBuilder = new StringBuilder();
 
+        private KeyWielder() { }
         public static KeyWielder New() { return new KeyWielder(); }
+
+        public KeyWielder AddRandomString(Int32 valueLength)
+        {
+            return AddRandomString(valueLength, String.Empty);
+        }
+
+        public KeyWielder AddRandomString(Int32 valueLength, String backSeparator)
+        {
+            const String alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+            return AddRandom(valueLength, alphabet.Split(','), backSeparator);
+        }
+
+        public KeyWielder AddRandomNumber(Int32 valueLength)
+        {
+            return AddRandomNumber(valueLength, String.Empty);
+        }
+
+        public KeyWielder AddRandomNumber(Int32 valueLength, String backSeparator)
+        {
+            const String numeric = "0,1,2,3,4,5,6,7,8,9";
+            return AddRandom(valueLength, numeric.Split(','), backSeparator);
+        }
+
+        public KeyWielder AddRandomAlphaNumeric(Int32 valueLength)
+        {
+            return AddRandomAlphaNumeric(valueLength, String.Empty);
+        }
+
+        public KeyWielder AddRandomAlphaNumeric(Int32 valueLength, String backSeparator)
+        {
+            const String alphaNumeric = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0,1,2,3,4,5,6,7,8,9";
+            return AddRandom(valueLength, alphaNumeric.Split(','), backSeparator);
+        }
+
+        private KeyWielder AddRandom(Int32 valueLength, String[] charCombination, String backSeparator)
+        {
+            Int32 seed = Guid.NewGuid().GetHashCode() % 50001;
+            var rnd = new Random(seed);
+            var randomString = new StringBuilder();
+            for (Int32 i = 0; i < valueLength; i++)
+            {
+                Int32 randomIdx = rnd.Next(0, charCombination.Length - 1);
+                randomString.Append(charCombination[randomIdx]);
+            }
+
+            keyBuilder.Append(randomString + backSeparator);
+            return this;
+        }
+
+        public KeyWielder AddGUIDString()
+        {
+            return AddGUIDString(String.Empty);
+        }
+
+        public KeyWielder AddGUIDString(String backSeparator)
+        {
+            keyBuilder.Append(Guid.NewGuid().ToString("N") + backSeparator);
+            return this;
+        }
 
         public KeyWielder AddString(String value, Int32 valueLength)
         {
