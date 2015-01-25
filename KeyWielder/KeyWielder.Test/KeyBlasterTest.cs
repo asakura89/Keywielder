@@ -34,13 +34,13 @@ namespace KeyWielder.Test
         [TestMethod]
         public void CustomSimpleKeyTest()
         {
-            String customKey = KeyBlaster.BuildSimpleKey(6, KeyBlaster.SimpleKeyType.NUMBER);
+            String customKey = KeyBlaster.BuildSimpleKey(6, KeyBlaster.SimpleKeyType.Number);
             Boolean isLengthEqualsToSix = customKey.Length == 6;
             Boolean isKeyConstainsNumber = Regex.IsMatch(customKey, @"^[0-9]+$");
             Assert.IsTrue(isLengthEqualsToSix);
             Assert.IsTrue(isKeyConstainsNumber);
 
-            String secondCustomKey = KeyBlaster.BuildSimpleKey(12, KeyBlaster.SimpleKeyType.TEXT);
+            String secondCustomKey = KeyBlaster.BuildSimpleKey(12, KeyBlaster.SimpleKeyType.Text);
             Boolean isLengthEqualsToTwelve = secondCustomKey.Length == 12;
             Boolean isKeyConstainsText = Regex.IsMatch(secondCustomKey, @"^[a-zA-Z]+$");
             Assert.IsTrue(isLengthEqualsToTwelve);
