@@ -6,11 +6,11 @@ namespace KeyWielder
 {
     public static class KeyWielder
     {
-        public enum KeyType { YEAR, MONTH, DATE, STRING, COUNTER }
+        public enum KeyType { Year, Month, Date, String, Counter }
 
         public class KeyWielderConfig
         {
-            public KeyType keyFormat = KeyType.COUNTER;
+            public KeyType keyFormat = KeyType.Counter;
             public String value = String.Empty;
             public Int32 valueLength = 4;
             public String replacementChar = "0";
@@ -30,19 +30,19 @@ namespace KeyWielder
             {
                 switch (keyConfigFormat.keyFormat)
                 {
-                    case KeyType.YEAR:
+                    case KeyType.Year:
                         AppendYearPart(keyConfigFormat, keyBuilder);
                         break;
-                    case KeyType.MONTH:
+                    case KeyType.Month:
                         AppendMonthPart(keyConfigFormat, monthList, keyBuilder);
                         break;
-                    case KeyType.DATE:
+                    case KeyType.Date:
                         AppendDatePart(keyConfigFormat, daysList, keyBuilder);
                         break;
-                    case KeyType.STRING:
+                    case KeyType.String:
                         AppendStringPart(keyConfigFormat, keyBuilder);
                         break;
-                    case KeyType.COUNTER:
+                    case KeyType.Counter:
                         AppendCounterPart(keyConfigFormat, keyBuilder);
                         break;
                 }
