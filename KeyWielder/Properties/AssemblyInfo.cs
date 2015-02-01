@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Keywielder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Simple token and unique key generator")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ASMNetworkLab")]
 [assembly: AssemblyProduct("Keywielder")]

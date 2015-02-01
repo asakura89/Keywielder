@@ -47,3 +47,7 @@ Console.WriteLine(complexKey);
 
 Above code will generate key like this (below), result may vary as I use year and combination random and GUID  
 *SIMPL-3d5968351a0645dda7bfd3bbeb4ad972-2015-CRFWSJWZ3B-SPRHG-01*  
+
+
+
+##### Don't forget to edit Post-Build event in Project properties
