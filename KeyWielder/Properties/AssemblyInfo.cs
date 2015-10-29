@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Keywielder")]
 [assembly: AssemblyDescription("Simple token and unique key generator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASMNetworkLab")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Keywielder")]
-[assembly: AssemblyCopyright("Copyright © ASMNetworkLab 2013")]
+[assembly: AssemblyCopyright("Copyright © 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

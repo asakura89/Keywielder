@@ -12,6 +12,13 @@ namespace Keywielder
         private Keywielder() { }
         public static Keywielder New() { return new Keywielder(); }
 
+        private Int32 GetRandomNumber(Int32 lowerBound, Int32 upperBound)
+        {
+            Int32 seed = Guid.NewGuid().GetHashCode() % 50001;
+            var rnd = new Random(seed);
+            return rnd.Next(lowerBound, upperBound);
+        }
+
         public Keywielder AddRandomString(Int32 valueLength)
         {
             return AddRandomString(valueLength, String.Empty);
@@ -47,12 +54,10 @@ namespace Keywielder
 
         private Keywielder AddRandom(Int32 valueLength, String[] charCombination, String backSeparator)
         {
-            Int32 seed = Guid.NewGuid().GetHashCode() % 50001;
-            var rnd = new Random(seed);
             var randomString = new StringBuilder();
             for (Int32 i = 0; i < valueLength; i++)
             {
-                Int32 randomIdx = rnd.Next(0, charCombination.Length - 1);
+                Int32 randomIdx = GetRandomNumber(0, charCombination.Length - 1);
                 randomString.Append(charCombination[randomIdx]);
             }
 

@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Keywielder.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASMNetworkLab")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Keywielder.Test")]
-[assembly: AssemblyCopyright("Copyright © ASMNetworkLab 2013")]
+[assembly: AssemblyCopyright("Copyright © 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
