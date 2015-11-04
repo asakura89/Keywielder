@@ -8,18 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywielder.Test", "Keywielder.Test\Keywielder.Test.csproj", "{713A3F50-57DA-409A-B995-6691FB593113}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Keywielder.Test\\Keywielder.Test.csproj
-		SccProjectName1 = Keywielder.Test
-		SccLocalPath1 = Keywielder.Test
-		SccProjectUniqueName2 = Keywielder\\Keywielder.csproj
-		SccProjectName2 = Keywielder
-		SccLocalPath2 = Keywielder
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

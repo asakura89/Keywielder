@@ -18,25 +18,25 @@ goto build
 
 :build-error
 echo Failed to compile.
+goto exit
 
 :build
 echo ---------------------------------------------------------------------
 echo Building AnyCpu release...
-%msbuild% Keywielder.sln %commonflags% /tv:3.5 /p:TargetFrameworkVersion=v2.0 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net20"
+%msbuild% %appname%.sln %commonflags% /p:TargetFrameworkVersion=v2.0 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net20"
 if errorlevel 1 goto build-error
-%msbuild% Keywielder.sln %commonflags% /tv:3.5 /p:TargetFrameworkVersion=v3.5 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net35"
+%msbuild% %appname%.sln %commonflags% /p:TargetFrameworkVersion=v3.5 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net35"
 if errorlevel 1 goto build-error
-%msbuild% Keywielder.sln %commonflags% /tv:4.0 /p:TargetFrameworkVersion=v4.0 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net40"
+%msbuild% %appname%.sln %commonflags% /p:TargetFrameworkVersion=v4.0 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net40"
 if errorlevel 1 goto build-error
-%msbuild% Keywielder.sln %commonflags% /tv:4.0 /p:TargetFrameworkVersion=v4.5 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net45"
+%msbuild% %appname%.sln %commonflags% /p:TargetFrameworkVersion=v4.5 /p:Platform="Any Cpu" /p:OutputPath="%outputdir%\net45"
 if errorlevel 1 goto build-error
 
 :done
 echo.
 echo ---------------------------------------------------------------------
 echo Compile finished.
-rem cd %cwd%
-rem goto exit
+echo.
 
 if exist %cachednuget% goto copynuget
 echo Downloading latest version of NuGet.exe...

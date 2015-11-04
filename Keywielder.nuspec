@@ -17,5 +17,9 @@
         <file src="\build\net20\Keywielder.pdb" target="lib\net20" />
         <file src="\build\net35\Keywielder.dll" target="lib\net35" />
         <file src="\build\net35\Keywielder.pdb" target="lib\net35" />
+        <file src="\build\net40\Keywielder.dll" target="lib\net40" />
+        <file src="\build\net40\Keywielder.pdb" target="lib\net40" />
+        <file src="\build\net45\Keywielder.dll" target="lib\net45" />
+        <file src="\build\net45\Keywielder.pdb" target="lib\net45" />
     </files>
 </package>
