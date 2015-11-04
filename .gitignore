@@ -5,6 +5,10 @@
 Thumbs.db
 ehthumbs.db
 
+# nuget folder
+.nuget/
+nuget/
+
 # Folder config file
 Desktop.ini
 
