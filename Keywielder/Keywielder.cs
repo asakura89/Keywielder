@@ -200,7 +200,12 @@ namespace Keywielder
 
         public Keywielder AddDate(String backSeparator)
         {
-            keyBuilder.Append(DateTime.Now.Day + backSeparator);
+            return AddDate(0, backSeparator);
+        }
+
+        public Keywielder AddDate(Int32 valueLength, String backSeparator)
+        {
+            keyBuilder.Append(DateTime.Now.Day.ToString().PadLeft(valueLength, '0') + backSeparator);
             return this;
         }
 
