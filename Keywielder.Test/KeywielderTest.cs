@@ -17,7 +17,7 @@ namespace Keywielder.Test
         [TestInitialize]
         public void Initialize()
         {
-            firstKey = Keywielder
+            firstKey = Wielder
                 .New()
                 .AddString("GRE", 3)
                 .AddLongYear()
@@ -28,7 +28,7 @@ namespace Keywielder.Test
 
             Debug.WriteLine(firstKey);
 
-            secondKey = Keywielder
+            secondKey = Wielder
                 .New()
                 .AddString("GRE", 3, "/")
                 .AddLongYear("-")
@@ -39,7 +39,7 @@ namespace Keywielder.Test
 
             Debug.WriteLine(secondKey);
 
-            thirdKey = Keywielder
+            thirdKey = Wielder
                 .New()
                 .AddString("ASAKURA", 7)
                 .AddCounter(77, 12, 2)
@@ -80,7 +80,7 @@ namespace Keywielder.Test
             String currentYearString = currentDate.Year.ToString();
             String currentDayString = indonesianDayArray[currentDayOfWeek];
             String separator = "•";
-            String fourthKey = Keywielder
+            String fourthKey = Wielder
                 .New()
                 .AddString("DOC", 3)
                 .AddString("UMENTATION", 5, "/")
@@ -115,19 +115,19 @@ namespace Keywielder.Test
         [TestMethod]
         public void RandomKeyTest()
         {
-            String fifthKey = Keywielder.New().AddRandomString(8).BuildKey();
+            String fifthKey = Wielder.New().AddRandomString(8).BuildKey();
             Debug.WriteLine(fifthKey);
 
             Assert.IsTrue(fifthKey.Length == 8);
             Assert.IsTrue(Regex.IsMatch(fifthKey, @"^[a-zA-Z]+$"));
 
-            String sixthKey = Keywielder.New().AddRandomAlphaNumeric(12).BuildKey();
+            String sixthKey = Wielder.New().AddRandomAlphaNumeric(12).BuildKey();
             Debug.WriteLine(sixthKey);
 
             Assert.IsTrue(sixthKey.Length == 12);
             Assert.IsTrue(Regex.IsMatch(sixthKey, @"^[a-zA-Z0-9]+$"));
 
-            String seventhKey = Keywielder.New().AddRandomNumber(6).BuildKey();
+            String seventhKey = Wielder.New().AddRandomNumber(6).BuildKey();
             Debug.WriteLine(seventhKey);
 
             Assert.IsTrue(seventhKey.Length == 6);
@@ -141,7 +141,7 @@ namespace Keywielder.Test
         [TestMethod]
         public void GuidKeyTest()
         {
-            String guidKey = Keywielder.New().AddGUIDString().BuildKey();
+            String guidKey = Wielder.New().AddGUIDString().BuildKey();
             Debug.WriteLine(guidKey);
 
             Assert.IsTrue(guidKey.Length == 32);
