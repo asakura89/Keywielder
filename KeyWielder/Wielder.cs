@@ -76,6 +76,11 @@ namespace Keywielder
             return this;
         }
 
+        public Wielder AddString(String value)
+        {
+            return AddString(value, value.Length);
+        }
+
         public Wielder AddString(String value, Int32 valueLength)
         {
             return AddString(value, valueLength, String.Empty);
@@ -85,6 +90,68 @@ namespace Keywielder
         {
             String strWithLength = value.Substring(0, valueLength).ToUpper();
             keyBuilder.Append(strWithLength + backSeparator);
+            return this;
+        }
+
+        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength, Char paddedBy)
+        {
+            return AddRightPadded(toBeRightPadded, valueLength, paddedBy, String.Empty);
+        }
+
+        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        {
+            String resultString = toBeRightPadded
+                .PadRight(valueLength, paddedBy)
+                .Substring(0, valueLength)
+                .ToUpper();
+            keyBuilder.Append(resultString + backSeparator);
+            return this;
+        }
+
+        public Wielder AddRightPadded(Func<Wielder, Wielder> toBeRightPadded, Int32 valueLength, Char paddedBy)
+        {
+            return AddRightPadded(toBeRightPadded, valueLength, paddedBy, String.Empty);
+        }
+
+        public Wielder AddRightPadded(Func<Wielder, Wielder> toBeRightPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        {
+            String resultString = toBeRightPadded(New())
+                .BuildKey()
+                .PadRight(valueLength, paddedBy)
+                .Substring(0, valueLength)
+                .ToUpper();
+            keyBuilder.Append(resultString + backSeparator);
+            return this;
+        }
+
+        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength, Char paddedBy)
+        {
+            return AddLeftPadded(tobeLeftPadded, valueLength, paddedBy, String.Empty);
+        }
+
+        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        {
+            String resultString = tobeLeftPadded
+                .PadLeft(valueLength, paddedBy)
+                .Substring(0, valueLength)
+                .ToUpper();
+            keyBuilder.Append(resultString + backSeparator);
+            return this;
+        }
+
+        public Wielder AddLeftPadded(Func<Wielder, Wielder> tobeLeftPadded, Int32 valueLength, Char paddedBy)
+        {
+            return AddLeftPadded(tobeLeftPadded, valueLength, paddedBy, String.Empty);
+        }
+
+        public Wielder AddLeftPadded(Func<Wielder, Wielder> tobeLeftPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        {
+            String resultString = tobeLeftPadded(New())
+                .BuildKey()
+                .PadLeft(valueLength, paddedBy)
+                .Substring(0, valueLength)
+                .ToUpper();
+            keyBuilder.Append(resultString + backSeparator);
             return this;
         }
 
