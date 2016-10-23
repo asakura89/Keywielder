@@ -65,6 +65,48 @@ namespace Keywielder.Test
         }
 
         [TestMethod]
+        public void AddRandomStringTest()
+        {
+            var list = new List<String>();
+            Int32 i = 0;
+            Int32 maxi = 5 ^ 5;
+            for (; i < maxi; i++)
+                list.Add(Wielder.New().AddRandomString(5).BuildKey());
+
+            Assert.IsFalse(list.ContainsDuplicate());
+        }
+
+        [TestMethod]
+        public void AddRandomNumberTest()
+        {
+            var list = new List<String>();
+            Int32 i = 0;
+            Int32 maxi = 5 ^ 5;
+            for (; i < maxi; i++)
+                list.Add(Wielder.New().AddRandomNumber(5).BuildKey());
+
+            Assert.IsFalse(list.ContainsDuplicate());
+        }
+
+        [TestMethod]
+        public void AddRandomAlphaNumericTest()
+        {
+            var list = new List<String>();
+            Int32 i = 0;
+            Int32 maxi = 5 ^ 5;
+            for (; i < maxi; i++)
+                list.Add(Wielder.New().AddRandomAlphaNumeric(5).BuildKey());
+
+            Assert.IsFalse(list.ContainsDuplicate());
+        }
+
+        [TestMethod]
+        public void AddStringTest()
+        {
+
+        }
+
+        [TestMethod]
         public void AllOutKeyTest()
         {
             var defaultMonthArray = new[] { String.Empty, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };

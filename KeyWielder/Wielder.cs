@@ -7,6 +7,8 @@ namespace Keywielder
 {
     public class Wielder
     {
+        private const Char Space = ' ';
+        private const Char Zero = '0';
         private readonly StringBuilder keyBuilder = new StringBuilder();
 
         private Wielder() { }
@@ -21,38 +23,23 @@ namespace Keywielder
 
         public Wielder AddRandomString(Int32 valueLength)
         {
-            return AddRandomString(valueLength, String.Empty);
-        }
-
-        public Wielder AddRandomString(Int32 valueLength, String backSeparator)
-        {
             const String alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
-            return AddRandom(valueLength, alphabet.Split(','), backSeparator);
+            return AddRandom(valueLength, alphabet.Split(','));
         }
 
         public Wielder AddRandomNumber(Int32 valueLength)
         {
-            return AddRandomNumber(valueLength, String.Empty);
-        }
-
-        public Wielder AddRandomNumber(Int32 valueLength, String backSeparator)
-        {
             const String numeric = "0,1,2,3,4,5,6,7,8,9";
-            return AddRandom(valueLength, numeric.Split(','), backSeparator);
+            return AddRandom(valueLength, numeric.Split(','));
         }
 
         public Wielder AddRandomAlphaNumeric(Int32 valueLength)
         {
-            return AddRandomAlphaNumeric(valueLength, String.Empty);
-        }
-
-        public Wielder AddRandomAlphaNumeric(Int32 valueLength, String backSeparator)
-        {
             const String alphaNumeric = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0,1,2,3,4,5,6,7,8,9";
-            return AddRandom(valueLength, alphaNumeric.Split(','), backSeparator);
+            return AddRandom(valueLength, alphaNumeric.Split(','));
         }
 
-        private Wielder AddRandom(Int32 valueLength, String[] charCombination, String backSeparator)
+        private Wielder AddRandom(Int32 valueLength, String[] charCombination)
         {
             var randomString = new StringBuilder();
             for (Int32 i = 0; i < valueLength; i++)
@@ -61,18 +48,13 @@ namespace Keywielder
                 randomString.Append(charCombination[randomIdx]);
             }
 
-            keyBuilder.Append(randomString + backSeparator);
+            keyBuilder.Append(randomString);
             return this;
         }
 
         public Wielder AddGUIDString()
         {
-            return AddGUIDString(String.Empty);
-        }
-
-        public Wielder AddGUIDString(String backSeparator)
-        {
-            keyBuilder.Append(Guid.NewGuid().ToString("N") + backSeparator);
+            keyBuilder.Append(Guid.NewGuid().ToString("N"));
             return this;
         }
 
@@ -83,295 +65,198 @@ namespace Keywielder
 
         public Wielder AddString(String value, Int32 valueLength)
         {
-            return AddString(value, valueLength, String.Empty);
-        }
-
-        public Wielder AddString(String value, Int32 valueLength, String backSeparator)
-        {
-            String strWithLength = value.Substring(0, valueLength).ToUpper();
-            keyBuilder.Append(strWithLength + backSeparator);
+            String strWithLength = value.Substring(0, valueLength);
+            keyBuilder.Append(strWithLength);
             return this;
         }
 
-        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength, Char paddedBy)
+        public Wielder AddRightPadded(Func<Wielder, Wielder> toBeRightPadded, Int32 valueLength)
         {
-            return AddRightPadded(toBeRightPadded, valueLength, paddedBy, String.Empty);
-        }
-
-        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength, Char paddedBy, String backSeparator)
-        {
-            String resultString = toBeRightPadded
-                .PadRight(valueLength, paddedBy)
-                .Substring(0, valueLength)
-                .ToUpper();
-            keyBuilder.Append(resultString + backSeparator);
-            return this;
+            return AddRightPadded(toBeRightPadded(New()).BuildKey(), valueLength, Space);
         }
 
         public Wielder AddRightPadded(Func<Wielder, Wielder> toBeRightPadded, Int32 valueLength, Char paddedBy)
         {
-            return AddRightPadded(toBeRightPadded, valueLength, paddedBy, String.Empty);
+            return AddRightPadded(toBeRightPadded(New()).BuildKey(), valueLength, paddedBy);
         }
 
-        public Wielder AddRightPadded(Func<Wielder, Wielder> toBeRightPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength)
         {
-            String resultString = toBeRightPadded(New())
-                .BuildKey()
+            return AddRightPadded(toBeRightPadded, valueLength, Space);
+        }
+
+        public Wielder AddRightPadded(String toBeRightPadded, Int32 valueLength, Char paddedBy)
+        {
+            String resultString = toBeRightPadded
                 .PadRight(valueLength, paddedBy)
-                .Substring(0, valueLength)
-                .ToUpper();
-            keyBuilder.Append(resultString + backSeparator);
+                .Substring(0, valueLength);
+            keyBuilder.Append(resultString);
             return this;
         }
 
-        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength, Char paddedBy)
+        public Wielder AddLeftPadded(Func<Wielder, Wielder> tobeLeftPadded, Int32 valueLength)
         {
-            return AddLeftPadded(tobeLeftPadded, valueLength, paddedBy, String.Empty);
-        }
-
-        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength, Char paddedBy, String backSeparator)
-        {
-            String resultString = tobeLeftPadded
-                .PadLeft(valueLength, paddedBy)
-                .Substring(0, valueLength)
-                .ToUpper();
-            keyBuilder.Append(resultString + backSeparator);
-            return this;
+            return AddLeftPadded(tobeLeftPadded(New()).BuildKey(), valueLength, Space);
         }
 
         public Wielder AddLeftPadded(Func<Wielder, Wielder> tobeLeftPadded, Int32 valueLength, Char paddedBy)
         {
-            return AddLeftPadded(tobeLeftPadded, valueLength, paddedBy, String.Empty);
+            return AddLeftPadded(tobeLeftPadded(New()).BuildKey(), valueLength, paddedBy);
         }
 
-        public Wielder AddLeftPadded(Func<Wielder, Wielder> tobeLeftPadded, Int32 valueLength, Char paddedBy, String backSeparator)
+        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength)
         {
-            String resultString = tobeLeftPadded(New())
-                .BuildKey()
+            return AddLeftPadded(tobeLeftPadded, valueLength, Space);
+        }
+
+        public Wielder AddLeftPadded(String tobeLeftPadded, Int32 valueLength, Char paddedBy)
+        {
+            String resultString = tobeLeftPadded
                 .PadLeft(valueLength, paddedBy)
-                .Substring(0, valueLength)
-                .ToUpper();
-            keyBuilder.Append(resultString + backSeparator);
+                .Substring(0, valueLength);
+            keyBuilder.Append(resultString);
             return this;
         }
 
         public Wielder AddShortYear()
         {
-            return AddYear(2, String.Empty);
-        }
-
-        public Wielder AddShortYear(String backSeparator)
-        {
-            return AddYear(2, backSeparator);
+            return AddYear(2);
         }
 
         public Wielder AddLongYear()
         {
-            return AddYear(4, String.Empty);
+            return AddYear(4);
         }
 
-        public Wielder AddLongYear(String backSeparator)
-        {
-            return AddYear(4, backSeparator);
-        }
-
-        private Wielder AddYear(Int32 valueLength, String backSeparator)
+        private Wielder AddYear(Int32 valueLength)
         {
             Int32 currentYear = DateTime.Now.Year;
             String yearWithLength = valueLength == 4 ? currentYear.ToString(CultureInfo.InvariantCulture) : currentYear.ToString(CultureInfo.InvariantCulture).Substring(2, 2);
-            keyBuilder.Append(yearWithLength + backSeparator);
+            keyBuilder.Append(yearWithLength);
             return this;
         }
 
         public Wielder AddShortMonth()
         {
-            return AddMonth(3, String.Empty);
-        }
-
-        public Wielder AddShortMonth(String backSeparator)
-        {
-            return AddMonth(3, backSeparator);
+            return AddMonth(3);
         }
 
         public Wielder AddShortMonth(IList<String> customMonthList)
         {
-            return AddMonth(3, customMonthList, String.Empty);
-        }
-
-        public Wielder AddShortMonth(IList<String> customMonthList, String backSeparator)
-        {
-            return AddMonth(3, customMonthList, backSeparator);
+            return AddMonth(3, customMonthList);
         }
 
         public Wielder AddLongMonth()
         {
-            return AddMonth(4, String.Empty);
-        }
-
-        public Wielder AddLongMonth(String backSeparator)
-        {
-            return AddMonth(4, backSeparator);
+            return AddMonth(4);
         }
 
         public Wielder AddLongMonth(IList<String> customMonthList)
         {
-            return AddMonth(4, customMonthList, String.Empty);
-        }
-
-        public Wielder AddLongMonth(IList<String> customMonthList, String backSeparator)
-        {
-            return AddMonth(4, customMonthList, backSeparator);
+            return AddMonth(4, customMonthList);
         }
 
         public Wielder AddNumericMonth()
         {
-            return AddMonth(2, String.Empty);
+            return AddMonth(2);
         }
 
-        public Wielder AddNumericMonth(String backSeparator)
-        {
-            return AddMonth(2, backSeparator);
-        }
-
-        private Wielder AddMonth(Int32 valueLength, String backSeparator)
+        private Wielder AddMonth(Int32 valueLength)
         {
             String[] defaultMonthList = { "", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
-            return AddMonth(valueLength, defaultMonthList, backSeparator);
+            return AddMonth(valueLength, defaultMonthList);
         }
 
-        private Wielder AddMonth(Int32 valueLength, IList<String> monthList, String backSeparator)
+        private Wielder AddMonth(Int32 valueLength, IList<String> monthList)
         {
             String month = String.Empty;
             Int32 currentMonth = DateTime.Now.Month;
             switch (valueLength)
             {
-                case 4:
-                    month = monthList[currentMonth];
+                case 2:
+                    month = currentMonth.ToString(CultureInfo.InvariantCulture).PadLeft(2, Zero);
                     break;
                 case 3:
                     month = monthList[currentMonth].Substring(0, 3);
                     break;
-                case 2:
-                    month = currentMonth.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0');
+                case 4:
+                default:
+                    month = monthList[currentMonth];
                     break;
             }
 
-            keyBuilder.Append(month + backSeparator);
+            keyBuilder.Append(month);
             return this;
         }
 
         public Wielder AddDate()
         {
-            return AddDate(String.Empty);
-        }
-
-        public Wielder AddDate(String backSeparator)
-        {
-            return AddDate(0, backSeparator);
-        }
-
-        public Wielder AddDate(Int32 valueLength, String backSeparator)
-        {
-            keyBuilder.Append(DateTime.Now.Day.ToString().PadLeft(valueLength, '0') + backSeparator);
+            keyBuilder.Append(DateTime.Now.Day.ToString().PadLeft(2, Zero));
             return this;
         }
 
         public Wielder AddShortDay()
         {
-            return AddDay(3, String.Empty);
-        }
-
-        public Wielder AddShortDay(String backSeparator)
-        {
-            return AddDay(3, backSeparator);
+            return AddDay(3);
         }
 
         public Wielder AddShortDay(IList<String> customDayList)
         {
-            return AddDay(3, customDayList, String.Empty);
-        }
-
-        public Wielder AddShortDay(IList<String> customDayList, String backSeparator)
-        {
-            return AddDay(3, customDayList, backSeparator);
+            return AddDay(3, customDayList);
         }
 
         public Wielder AddLongDay()
         {
-            return AddDay(4, String.Empty);
-        }
-
-        public Wielder AddLongDay(String backSeparator)
-        {
-            return AddDay(4, backSeparator);
+            return AddDay(4);
         }
 
         public Wielder AddLongDay(IList<String> customDayList)
         {
-            return AddDay(4, customDayList, String.Empty);
-        }
-
-        public Wielder AddLongDay(IList<String> customDayList, String backSeparator)
-        {
-            return AddDay(4, customDayList, backSeparator);
+            return AddDay(4, customDayList);
         }
 
         public Wielder AddNumericDay()
         {
-            return AddDay(2, String.Empty);
+            return AddDay(2);
         }
 
-        public Wielder AddNumericDay(String backSeparator)
-        {
-            return AddDay(2, backSeparator);
-        }
-
-        private Wielder AddDay(Int32 valueLength, String backSeparator)
+        private Wielder AddDay(Int32 valueLength)
         {
             String[] defaultDayList = { "", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY" };
-            return AddDay(valueLength, defaultDayList, backSeparator);
+            return AddDay(valueLength, defaultDayList);
         }
 
-        private Wielder AddDay(Int32 valueLength, IList<String> dayList, String backSeparator)
+        private Wielder AddDay(Int32 valueLength, IList<String> dayList)
         {
             String day = String.Empty;
             Int32 currentDayOfWeek = Convert.ToInt32(DateTime.Now.DayOfWeek) + 1;
             switch (valueLength)
             {
-                case 4:
-                    day = dayList[currentDayOfWeek];
+                case 2:
+                    day = currentDayOfWeek.ToString(CultureInfo.InvariantCulture).PadLeft(2, Zero);
                     break;
                 case 3:
                     day = dayList[currentDayOfWeek].Substring(0, 3);
                     break;
-                case 2:
-                    day = currentDayOfWeek.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0');
+                case 4:
+                default:
+                    day = dayList[currentDayOfWeek];
                     break;
             }
 
-            keyBuilder.Append(day + backSeparator);
+            keyBuilder.Append(day);
             return this;
         }
 
-        public Wielder AddCounter(Int32 currentCounter, Int32 valueLength)
+        public Wielder AddCounter(Int32 currentCounter)
         {
-            return AddCounter(currentCounter, 1, valueLength, String.Empty);
+            return AddCounter(currentCounter, 1);
         }
 
-        public Wielder AddCounter(Int32 currentCounter, Int32 increment, Int32 valueLength)
+        public Wielder AddCounter(Int32 currentCounter, Int32 increment)
         {
-            return AddCounter(currentCounter, increment, valueLength, String.Empty);
-        }
-
-        public Wielder AddCounter(Int32 currentCounter, Int32 valueLength, String backSeparator)
-        {
-            return AddCounter(currentCounter, 1, valueLength, backSeparator);
-        }
-
-        public Wielder AddCounter(Int32 currentCounter, Int32 increment, Int32 valueLength, String backSeparator)
-        {
-            String counter = (currentCounter + increment).ToString(CultureInfo.InvariantCulture).PadLeft(valueLength, '0');
-            keyBuilder.Append(counter + backSeparator);
+            String counter = (currentCounter + increment).ToString(CultureInfo.InvariantCulture);
+            keyBuilder.Append(counter);
             return this;
         }
 
