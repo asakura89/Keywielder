@@ -23,18 +23,22 @@ namespace Keywielder.Test
                 .AddLongYear()
                 .AddNumericMonth()
                 .AddDate()
-                .AddCounter(12, 4)
+                .AddLeftPadded(w => w.AddCounter(12), 4, '0')
                 .BuildKey();
 
             Debug.WriteLine(firstKey);
 
             secondKey = Wielder
                 .New()
-                .AddString("GRE", 3, "/")
-                .AddLongYear("-")
-                .AddNumericMonth("-")
-                .AddDate("/")
-                .AddCounter(237, 5)
+                .AddString("GRE", 3)
+                .AddString("/")
+                .AddLongYear()
+                .AddString("-")
+                .AddNumericMonth()
+                .AddString("-")
+                .AddDate()
+                .AddString("/")
+                .AddLeftPadded(w => w.AddCounter(237), 5, '0')
                 .BuildKey();
 
             Debug.WriteLine(secondKey);
@@ -42,7 +46,7 @@ namespace Keywielder.Test
             thirdKey = Wielder
                 .New()
                 .AddString("ASAKURA", 7)
-                .AddCounter(77, 12, 2)
+                .AddCounter(77, 12)
                 .BuildKey();
 
             Debug.WriteLine(thirdKey);
@@ -125,21 +129,35 @@ namespace Keywielder.Test
             String fourthKey = Wielder
                 .New()
                 .AddString("DOC", 3)
-                .AddString("UMENTATION", 5, "/")
-                .AddShortYear("/")
-                .AddLongYear("/")
-                .AddShortMonth(separator)
-                .AddShortMonth(indonesianMonthArray, separator)
-                .AddLongMonth(separator)
-                .AddLongMonth(indonesianMonthList, separator)
-                .AddNumericMonth("/")
-                .AddDate("/")
-                .AddShortDay(separator)
-                .AddLongDay(separator)
-                .AddShortDay(indonesianDayArray, separator)
-                .AddLongDay(indonesianDayList, separator)
-                .AddNumericDay("/")
-                .AddCounter(123, 400, 5)
+                .AddString("UMENTATION", 5)
+                .AddString("/")
+                .AddShortYear()
+                .AddString("/")
+                .AddLongYear()
+                .AddString("/")
+                .AddShortMonth(indonesianMonthList)
+                .AddString(separator)
+                .AddShortMonth(indonesianMonthArray)
+                .AddString(separator)
+                .AddLongMonth()
+                .AddString(separator)
+                .AddLongMonth(indonesianMonthList)
+                .AddString(separator)
+                .AddNumericMonth()
+                .AddString("/")
+                .AddDate()
+                .AddString("/")
+                .AddShortDay()
+                .AddString(separator)
+                .AddLongDay()
+                .AddString(separator)
+                .AddShortDay(indonesianDayArray)
+                .AddString(separator)
+                .AddLongDay(indonesianDayList)
+                .AddString(separator)
+                .AddNumericDay()
+                .AddString("/")
+                .AddLeftPadded(w => w.AddCounter(123, 400), 5, '0')
                 .BuildKey();
 
             Debug.WriteLine(fourthKey);
