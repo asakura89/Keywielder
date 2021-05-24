@@ -54,6 +54,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="RyaNG, Version=1.0.2021.1424, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RyaNG.1.0.2021.1424\lib\net35\RyaNG.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
