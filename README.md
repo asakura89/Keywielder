@@ -7,14 +7,17 @@ Such as Document number in (LOB) apps.
 # How to - 1
 
 ```csharp
-String key = Keywielder
-        .New()
-        .AddString("KEY", 3, "-")
-        .AddLongYear()
-        .AddNumericMonth()
-        .AddDate("-")
-        .AddCounter(12, 10, 4)
-        .BuildKey();
+String key = Wielder
+    .New()
+    .AddString("KEY")
+    .AddString("-")
+    .AddLongYear()
+    .AddNumericMonth()
+    .AddDate()
+    .AddString("-")
+    .AddLeftPadded(w => w.AddCounter(12, 10), 4, '0')
+    .BuildKey()
+    .Dump();
 
 Console.WriteLine(key);
 ```
@@ -26,15 +29,21 @@ Above code will generate key like this (below), result may vary as I use date
 # How to - 2
 
 ```csharp
-String simpleKey = Keywielder
-        .New()
-        .AddString("SIMPLE", 5, "-")
-        .AddGUIDString("-")
-        .AddLongYear("-")
-        .AddRandomAlphaNumeric(10, "-")
-        .AddRandomString(5, "-")
-        .AddNumericDay()
-        .BuildKey();
+String complexKey = Wielder
+    .New()
+    .AddString("SIMPLE")
+    .AddString("-")
+    .AddGuidString()
+    .AddString("-")
+    .AddLongYear()
+    .AddString("-")
+    .AddRandomAlphaNumeric(10)
+    .AddString("-")
+    .AddRandomString(5)
+    .AddString("-")
+    .AddNumericDay()
+    .BuildKey()
+    .Dump();
 
 Console.WriteLine(complexKey);
 ```
